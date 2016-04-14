@@ -65,7 +65,7 @@ module APNS
   protected
 
   def self.open_connection
-    context self.get_context
+    context = self.get_context
     sock = TCPSocket.new(self.host, self.port)
     ssl = OpenSSL::SSL::SSLSocket.new(sock,context)
     ssl.connect
