@@ -91,7 +91,7 @@ module APNS
       context.cert = OpenSSL::X509::Certificate.new(File.read(self.pem))
       context.key  = OpenSSL::PKey::RSA.new(File.read(self.pem), self.pass)
     elsif self.pem_contents
-      raise "The contents to your pem file are empty!" unless self.pem_contents.empty?
+      raise "The contents to your pem file are empty!" if self.pem_contents.empty?
       context.cert = OpenSSL::X509::Certificate.new(self.pem_contents)
       context.key  = OpenSSL::PKey::RSA.new(self.pem_contents, self.pass)
     else
